@@ -1,0 +1,44 @@
+"""
+Program: Count Occurrence of Numbers
+
+Description: This program reads a single line of integers from the user, with each integer separated by a space. It then counts the occurrences of each unique number between 1 and 100 and displays the results.
+
+Functions:
+    - get_user_input(): Prompts the user for input and returns a list of integers.
+    - count_occurrences(numbers): Takes a list of integers, filters those between 1 and 100, and returns a dictionary with each number as a key and its count as the value.
+    - display_counts(count_dict): Takes a dictionary of counts and displays each number and its occurrence count.
+
+Input:
+     - A single line of integers separated by spaces (e.g., "5 7 5 100 23 5").
+     - Each integer should be between 1 and 100. Values outside this range will be ignored.
+ 
+Output:
+     - For each unique integer (within the range), the program will print the number and the count of times it appears.
+
+Author: Cherry
+Date: 11/03/2024
+
+"""
+
+def get_user_input(): # Prompts the user for a line of integers and returns them as a list of integers.
+    get_user_input = input("Enter integers between 1 and 100, separated by spaces: ")
+    return [int(num) for num in get_user_input.split()]
+
+def count_occurrences(numbers):
+    # Counts occurrences of each number between 1 and 100 in the provided list.
+    count_dict = {}
+    for num in numbers:
+        if 1 <= num <= 100:
+            count_dict[num] = count_dict.get(num, 0) + 1
+    return count_dict
+
+def display_counts(count_dict):
+    # Displays each number and its occurrence count from the count dictionary.
+    for num, count in sorted(count_dict.items()):
+        print(f"{num} occurs {count} time{'s' if count > 1 else ''}")
+
+# Main program flow
+numbers = get_user_input()
+count_dict = count_occurrences(numbers)
+display_counts(count_dict)
+
