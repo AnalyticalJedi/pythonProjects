@@ -1,0 +1,118 @@
+"""
+Description:
+This program defines a class named Account that simulates a bank account. 
+It includes attributes for account ID, balance, and annual interest rate. 
+The class provides methods to deposit and withdraw money, calculate the 
+monthly interest rate, and calculate the monthly interest amount.
+
+Functions:
+1. __init__(self, id=0, balance=100, annualInterestRate=0): 
+   Initializes the account with default or specified values.
+2. get_id(self), set_id(self, id): Accessor and mutator for the account ID.
+3. get_balance(self), set_balance(self, balance): Accessor and mutator for balance.
+4. get_annualInterestRate(self), set_annualInterestRate(self, annualInterestRate): 
+   Accessor and mutator for annual interest rate.
+5. getMonthlyInterestRate(self): Returns the monthly interest rate.
+6. getMonthlyInterest(self): Returns the monthly interest amount.
+7. withdraw(self, amount): Withdraws a specified amount from the balance.
+8. deposit(self, amount): Deposits a specified amount into the balance.
+
+Input:
+- Account ID: An integer representing the account ID.
+- Initial Balance: A float representing the starting balance.
+- Annual Interest Rate: A float representing the annual interest rate.
+- Amounts for withdrawal and deposit: Floats representing transaction amounts.
+
+Output:
+- Account ID, updated balance, monthly interest rate, and monthly interest amount.
+
+Date: 11/18/2024
+Author: Cherry
+
+-----------------------
+|      Account         |
+-----------------------
+| - id: int            |
+| - balance: float     |
+| - annualInterestRate: float |
+-----------------------
+| + __init__(id=0, balance=100, annualInterestRate=0) |
+| + get_id(): int                                  |
+| + set_id(id: int)                                |
+| + get_balance(): float                           |
+| + set_balance(balance: float)                    |
+| + get_annualInterestRate(): float                |
+| + set_annualInterestRate(annualInterestRate: float) |
+| + getMonthlyInterestRate(): float                |
+| + getMonthlyInterest(): float                    |
+| + withdraw(amount: float): None                  |
+| + deposit(amount: float): None                   |
+-----------------------
+"""
+class Account:
+    def __init__(self, id=0, balance=100, annualInterestRate=0):
+        # Initialize the account with default or specified values for ID, balance, and interest rate
+        self.__id = id  # Private attribute for account ID
+        self.__balance = balance  # Private attribute for account balance
+        self.__annualInterestRate = annualInterestRate  # Private attribute for annual interest rate
+    
+    # Accessor methods
+    def get_id(self):
+        # Return the account ID
+        return self.__id
+    
+    def get_balance(self):
+        # Return the account balance
+        return self.__balance
+    
+    def get_annualInterestRate(self):
+        # Return the annual interest rate
+        return self.__annualInterestRate
+    
+    # Mutator methods
+    def set_id(self, id):
+        # Set a new account ID
+        self.__id = id
+    
+    def set_balance(self, balance):
+        # Set a new account balance
+        self.__balance = balance
+    
+    def set_annualInterestRate(self, annualInterestRate):
+        # Set a new annual interest rate
+        self.__annualInterestRate = annualInterestRate
+    
+    # Method to get monthly interest rate
+    def getMonthlyInterestRate(self):
+        # Calculate and return the monthly interest rate
+        return self.__annualInterestRate / 12
+    
+    # Method to get monthly interest
+    def getMonthlyInterest(self):
+        # Calculate the monthly interest amount
+        monthlyInterestRate = self.getMonthlyInterestRate() / 100  # Convert percentage to decimal
+        return self.__balance * monthlyInterestRate  # Calculate interest based on balance
+    
+    # Method to withdraw money
+    def withdraw(self, amount):
+        # Withdraw a specified amount if funds are sufficient
+        if amount <= self.__balance:
+            self.__balance -= amount  # Deduct amount from balance
+        else:
+            print("Insufficient funds!")  # Print error message if balance is insufficient
+    
+    # Method to deposit money
+    def deposit(self, amount):
+        # Deposit a specified amount to the balance
+        self.__balance += amount
+
+# Test Program
+account = Account(1122, 20000, 4.5)  # Create an Account object with ID 1122, balance $20,000, and 4.5% annual interest
+account.withdraw(2500)  # Withdraw $2,500 from the account
+account.deposit(3000)  # Deposit $3,000 to the account
+
+# Simplified print statements
+print("Account ID:", account.get_id())  # Print account ID
+print("Balance:", account.get_balance())  # Print updated balance
+print("Monthly Interest Rate:", account.getMonthlyInterestRate())  # Print monthly interest rate
+print("Monthly Interest:", account.getMonthlyInterest())  # Print monthly interest amount
