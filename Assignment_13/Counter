@@ -1,0 +1,68 @@
+"""
+This program counts the number of characters, words, and lines in a file.
+It allows the user to specify the filename and processes the file to calculate:
+1. Number of lines
+2. Number of words
+3. Number of characters
+
+Functions:
+- count_file_contents(filename):
+  - Parameters:
+    - filename (str): The name of the file to process.
+  - Input:
+    - A valid text file.
+  - Output:
+    - Prints the total number of lines, words, and characters in the file.
+  - Error Handling:
+    - Handles the case where the specified file does not exist.
+
+Usage:
+- Run the program.
+- Enter the filename when prompted.
+- View the counts of characters, words, and lines.
+
+Created a file "grocerylist.txt" containing items you'd pick up at the grocery store.
+
+The file "grocerylist.txt" contains:
+Carrot
+Oatmeal
+Steak
+Potato
+Corn
+Milk
+
+Output:
+Number of lines: 6
+Number of words: 6
+Number of characters: 38
+
+Date: 12/02/2024
+Author: Cherry
+
+"""
+
+def count_file_contents(filename):  # Define the function to count file contents
+    try:
+        # Attempt to open the file in read mode
+        with open(filename, 'r') as file:  # 'with' ensures the file is closed properly
+            lines = file.readlines()  # Read all lines into a list
+            
+        num_lines = len(lines)  # Count the number of lines in the file
+        
+        num_chars = 0  # Initialize character count
+        num_words = 0  # Initialize word count
+        for line in lines:  # Loop through each line
+            num_chars += len(line)  # Add the number of characters in the line
+            num_words += len(line.split())  # Add the number of words in the line
+        
+        # Print the results
+        print(f"Number of lines: {num_lines}")  # Print the line count
+        print(f"Number of words: {num_words}")  # Print the word count
+        print(f"Number of characters: {num_chars}")  # Print the character count
+    except FileNotFoundError:  # Handle the case where the file is not found
+        # Inform the user that the file was not found
+        print("The file does not exist. Please enter a valid filename.")  
+
+# Prompt the user for a filename
+filename = input("Enter the filename: ")  # Get the filename from the user
+count_file_contents(filename)  # Call the function to count file contents
