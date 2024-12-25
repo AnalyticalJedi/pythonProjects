@@ -1,8 +1,4 @@
-# pythonProjects
-This repository contains my class Python assignments for the fall 2024 semester.
-These assignments show a progression of learning and application. 
-
-# Python Projects Repository
+# pythonProjects Repository
 
 This repository contains a collection of Python assignments and projects developed during the Fall 2024 semester. Each project demonstrates a specific concept or skill in Python programming, ranging from basic calculations to more advanced features like class implementations and file handling.
 
