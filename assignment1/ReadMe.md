@@ -13,7 +13,7 @@ This project demonstrates Python's ability to work with Unicode values and seque
 ## Date of Completion
 **October 3, 2024**
 
-## Author: Cherry**
+## Author: Cherry
 
 ---
 
