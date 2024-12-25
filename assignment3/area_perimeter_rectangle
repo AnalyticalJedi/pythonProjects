@@ -5,6 +5,8 @@
 Functions:
     The area of a rectangle can be computed by the formula: area = width * height
     The perimeter of a rectangle can be computed by the formula: perimeter = 2 * (width + height)
+
+Author: Cherry
     
 """
 #Define the width and height of the rectangle
